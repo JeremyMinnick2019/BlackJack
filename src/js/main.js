@@ -12,9 +12,8 @@ export default () =>
     const buttonname = document.getElementById("name")
     const buttonreset = document.getElementById("reset")
     const Game = BlackJack.singleDeckGame;
-    const result = BlackJack.result;
+    const Result = BlackJack.Result;
     let bet = 0;
-    document.getElementById("Chips").innerHTML = `Your chips: ${Game.getUserChips()}`
     
     buttonreset.onclick = function() 
     {
@@ -29,6 +28,7 @@ export default () =>
 
     buttonstart.onclick = function() 
     {
+        document.getElementById("Chips").innerHTML = `Your chips: ${Game.getUserChips()}`
         setTimeout(function() { bet = window.prompt("How much would you like to bet?") 
         Game.receiveAnte(bet)}, 1500);
         Game.deal();
