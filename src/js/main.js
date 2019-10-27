@@ -2,9 +2,9 @@ import BlackJack from "blackjack-dealer-logic"
 export default () =>
 {
 
-    var wins = 0;
-    var losses = 0;
-    var pushes = 0;
+    let wins = 0;
+    let losses = 0;
+    let pushes = 0;
     const buttonstart = document.getElementById("start");
     const buttonhit = document.getElementById("hit");
     const buttonstand = document.getElementById("stand");
