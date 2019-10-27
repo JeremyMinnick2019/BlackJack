@@ -2,16 +2,25 @@ import BlackJack from "blackjack-dealer-logic"
 export default () =>
 {
 
-    
+    var wins = 0;
+    var losses = 0;
+    var pushes = 0;
     const buttonstart = document.getElementById("start");
     const buttonhit = document.getElementById("hit");
     const buttonstand = document.getElementById("stand");
     const buttondouble = document.getElementById("double");
+    const buttonname = document.getElementById("name")
     const Game = BlackJack.singleDeckGame;
     const result = BlackJack.result;
     let bet = 0;
-    document.getElementById("Chips")
-    Chips.innerHTML = `Your chips: ${Game.getUserChips()}`
+    document.getElementById("Chips").innerHTML = `Your chips: ${Game.getUserChips()}`
+    
+
+    buttonname.onclick = function() 
+    {
+        const PlayerName = window.prompt("What is your name");
+        document.getElementById("PlayerName").innerHTML = `Hello ${PlayerName}!`
+    }
 
     buttonstart.onclick = function() 
     {
@@ -32,19 +41,22 @@ export default () =>
           switch(Game.outcome()) 
           {
             case Result.WIN:
-            document.getElementById("result").innerHTML = 'You have Won';
+            document.getElementById("result").innerHTML = "You have Won";
             Game.userWin();
             Game.resetPlayers();
+            wins++;
             break;
             case Result.LOSS:
-            document.getElementById("result").innerHTML = 'You have Lost';
+            document.getElementById("result").innerHTML = "You have Lost";
             Game.resetAnte()
             Game.resetPlayers();
+            losses++;
             break;
             case Result.PUSH:
-            document.getElementById("result").innerHTML = 'Its a Push';
+            document.getElementById("result").innerHTML = "Its a Push";
             Game.pushHand();
             Game.resetPlayers();
+            pushes++;
             break;
 
             default:
@@ -65,19 +77,22 @@ export default () =>
           switch(Game.outcome()) 
           {
             case Result.WIN:
-            document.getElementById("result").innerHTML = 'You have Won';
+            document.getElementById("result").innerHTML = "You have Won";
             Game.userWin();
             Game.resetPlayers();
+            wins++;
             break;
             case Result.LOSS:
-            document.getElementById("result").innerHTML = 'You have Lost';
+            document.getElementById("result").innerHTML = "You have Lost";
             Game.resetAnte()
             Game.resetPlayers();
+            losses++;
             break;
             case Result.PUSH:
-            document.getElementById("result").innerHTML = 'Its a Push';
+            document.getElementById("result").innerHTML = "Its a Push";
             Game.pushHand();
             Game.resetPlayers();
+            pushes++;
             break;
 
             default:
@@ -90,7 +105,10 @@ export default () =>
         {
             Game.doubleUser(2 * bet)
             Game.evaluateUser();
-
+            document.getElementById("doublecheck").innerHTML = `Your Bet was Doubled`
         }
+        document.getElementById("win").innerHTML = `wins: ${wins}`
+        document.getElementById("loss").innerHTML = `losses: ${losses}`
+        document.getElementById("push").innerHTML = `push: ${pushes}` 
     }
 }
