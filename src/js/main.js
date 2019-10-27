@@ -10,11 +10,16 @@ export default () =>
     const buttonstand = document.getElementById("stand");
     const buttondouble = document.getElementById("double");
     const buttonname = document.getElementById("name")
+    const buttonreset = document.getElementById("reset")
     const Game = BlackJack.singleDeckGame;
     const result = BlackJack.result;
     let bet = 0;
     document.getElementById("Chips").innerHTML = `Your chips: ${Game.getUserChips()}`
     
+    buttonreset.onclick = function() 
+    {
+        location.reload();
+    }
 
     buttonname.onclick = function() 
     {
